@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from './card'
 import { Button } from './button'
-import { MenuIcon, ShoppingCartIcon } from 'lucide-react'
+import { HomeIcon, ListOrderedIcon, LogInIcon, MenuIcon, PercentCircleIcon, ShoppingCartIcon } from 'lucide-react'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './sheet'
 
 const Header = () => {
@@ -15,7 +15,38 @@ const Header = () => {
         </SheetTrigger>
 
         <SheetContent side="left">
-          <h1>Fodasi</h1>
+          <h1>Menu</h1>
+          <div className="mt-2 space-y-2">
+            <Button 
+              variant="outline" 
+              className="w-full justify-start gap-2"
+            >
+                <LogInIcon size={22} />
+                Fazer Login
+            </Button>
+            <Button 
+              variant="outline" 
+              className="w-full justify-start gap-2"
+            >
+                <HomeIcon size={22} />
+                Inicio
+            </Button>
+            <Button 
+              variant="outline" 
+              className="w-full justify-start gap-2"
+            >
+                <PercentCircleIcon size={22} />
+                Ofertas
+            </Button>
+            <Button 
+              variant="outline" 
+              className="w-full justify-start gap-2"
+            >
+                <ListOrderedIcon size={22} />
+                Catálogo
+            </Button>
+          </div>
+
         </SheetContent>
       </Sheet>
 
