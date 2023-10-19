@@ -1,7 +1,4 @@
 import { prismaClient } from "@/lib/prisma"
-import { Product } from "@prisma/client"
-
-
 
 export class ProductUseCase {
   async productsWithDealsBySlug(slug: 'mouses' | 'keyboards') {
