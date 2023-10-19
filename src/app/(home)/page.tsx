@@ -1,17 +1,13 @@
 import Image from "next/image"
 import Categories from "./components/Categories"
 import ProductList from "./components/ProductList"
-import { prismaClient } from "@/lib/prisma"
+import { productUseCase } from "@/use-cases/products"
 
 const Home = async () => {
-  const productsWithDeal = await prismaClient.product.findMany({
-    where: {
-      discountPercentage: {
-        gt: 0
-      }
-    }
-  })
-
+  const mousesWithDeals = await productUseCase.productsWithDealsBySlug('mouses')
+  const keyboardsWithDeals = await productUseCase.productsWithDealsBySlug('keyboards')
+  const productsWithDeal = await productUseCase.allProducutsWithDeals()
+  
   return (
     <>
       <Image 
@@ -36,10 +32,29 @@ const Home = async () => {
         src="/images/banner-home-02.png"
         width={0}
         height={0}
-        className="h-auto w-full px-5"
+        className="h-auto w-full px-5 mt-8"
         sizes="100vw"
         alt="Ate 55% de desconto em mouses!."
       /> 
+
+      <div className="mt-8">
+        <p className="font-semibold uppercase mb-3 pl-5">Teclados</p>
+        <ProductList products={keyboardsWithDeals} />
+      </div>
+
+      <Image 
+        src="/images/banner-home-03.png"
+        width={0}
+        height={0}
+        className="h-auto w-full px-5 mt-8"
+        sizes="100vw"
+        alt="Ate 20% de desconto em mouses!."
+      /> 
+
+      <div className="mt-8">
+        <p className="font-semibold uppercase mb-3 pl-5">Mouses</p>
+        <ProductList products={mousesWithDeals} />
+      </div>
     </>
   )
 }
