@@ -1,9 +1,8 @@
-import Image from "next/image"
 import Categories from "./components/Categories"
 import ProductList from "./components/ProductList"
-import { productUseCase } from "@/use-cases/products"
 import SectionTitle from "@/components/SectionTitle"
 import Banner from "./components/Banner"
+import { productUseCase } from "@/use-cases/products"
 
 const Home = async () => {
   const mousesWithDeals = await productUseCase.productsWithDealsBySlug('mouses')
@@ -11,7 +10,7 @@ const Home = async () => {
   const productsWithDeal = await productUseCase.allProducutsWithDeals()
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 py-8">
       <Banner 
         src="banner-home-01.png"
         alt="Ate 55% de desconto esse mês!"

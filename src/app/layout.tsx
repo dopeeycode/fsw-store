@@ -3,6 +3,7 @@ import { Space_Grotesk as SpaceGrotesk } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import { AuthProvider } from '@/providers/auth'
+import Footer from '@/components/Footer'
 
 const spaceGroteskFont = SpaceGrotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           {children}
+          <Footer />
         </AuthProvider>
       </body>
     </html>
