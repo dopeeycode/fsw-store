@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,23 +8,23 @@ datasource db {
 }
 
 model Category {
-  id       String    @id @default(uuid())
-  name     String
-  slug     String
-  imageURL String
-  products  Product[]
+  id String @id @default(uuid())
+  name String
+  slug String
+  imageUrl String
+  products Product[]
 }
 
 model Product {
-  id                 String   @id @default(uuid())
-  name               String
-  description        String
-  basePrice          Decimal  @db.Decimal(8, 2)
-  discountPercentage Int      @default(0)
-  hasDiscount        Boolean  @default(false)
-  imageURLS          String[]
-  category           Category @relation(fields: [category_id], references: [id])
-  category_id        String
+  id String @id @default(uuid())
+  name String
+  slug String
+  description String
+  basePrice Decimal @db.Decimal(8, 2)
+  imageUrls String[]
+  categoryId String
+  category Category @relation(fields: [categoryId], references: [id])
+  discountPercentage Int @default(0)
 }
 
 model Account {
