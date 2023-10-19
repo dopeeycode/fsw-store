@@ -2,60 +2,50 @@ import Image from "next/image"
 import Categories from "./components/Categories"
 import ProductList from "./components/ProductList"
 import { productUseCase } from "@/use-cases/products"
+import SectionTitle from "@/components/SectionTitle"
+import Banner from "./components/Banner"
 
 const Home = async () => {
   const mousesWithDeals = await productUseCase.productsWithDealsBySlug('mouses')
   const keyboardsWithDeals = await productUseCase.productsWithDealsBySlug('keyboards')
   const productsWithDeal = await productUseCase.allProducutsWithDeals()
-  
+
   return (
-    <>
-      <Image 
-        src="/images/banner-home-01.png"
-        width={0}
-        height={0}
-        className="h-auto w-full px-5"
-        sizes="100vw"
+    <div className="flex flex-col gap-8">
+      <Banner 
+        src="banner-home-01.png"
         alt="Ate 55% de desconto esse mês!"
       /> 
 
-      <div className="mt-8 px-5">
+      <div className="px-5">
         <Categories />
       </div>
 
-      <div className="mt-8">
-        <p className="font-semibold uppercase mb-3 pl-5">Ofertas</p>
+      <div className="">
+        <SectionTitle>Ofertas</SectionTitle>
         <ProductList products={productsWithDeal} />
       </div>
 
-      <Image 
-        src="/images/banner-home-02.png"
-        width={0}
-        height={0}
-        className="h-auto w-full px-5 mt-8"
-        sizes="100vw"
-        alt="Ate 55% de desconto em mouses!."
+      <Banner 
+        src="banner-home-02.png"
+        alt="Ate 55% de desconto em mouses!"
       /> 
 
-      <div className="mt-8">
-        <p className="font-semibold uppercase mb-3 pl-5">Teclados</p>
+      <div className="">
+        <SectionTitle>Teclados</SectionTitle>
         <ProductList products={keyboardsWithDeals} />
       </div>
 
-      <Image 
-        src="/images/banner-home-03.png"
-        width={0}
-        height={0}
-        className="h-auto w-full px-5 mt-8"
-        sizes="100vw"
-        alt="Ate 20% de desconto em mouses!."
+      <Banner 
+        src="banner-home-03.png"
+        alt="Ate 55% de desconto em fones!"
       /> 
 
-      <div className="mt-8">
-        <p className="font-semibold uppercase mb-3 pl-5">Mouses</p>
+      <div className="">
+        <SectionTitle>Mouses</SectionTitle>
         <ProductList products={mousesWithDeals} />
       </div>
-    </>
+    </div>
   )
 }
 
