@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Categories from "./components/Categories"
 
 const Home = () => {
 
@@ -12,6 +13,10 @@ const Home = () => {
         sizes="100vw"
         alt="Ate 55% de desconto esse mês!"
       /> 
+
+      <div className="mt-8">
+        <Categories />
+      </div>
     </div>
   )
 }
