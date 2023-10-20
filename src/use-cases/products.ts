@@ -1,8 +1,37 @@
 import { prismaClient } from '@/lib/prisma'
 
 export class ProductUseCase {
-  async productsWithDealsBySlug(slug: 'mouses' | 'keyboards') {
-    const productWithDeals = await prismaClient.product.findMany({
+  async searchProductsBySlug(
+    slug:
+      | 'mouses'
+      | 'keyboards'
+      | 'headphones'
+      | 'mousepads'
+      | 'monitors'
+      | 'speakers',
+  ) {
+    const products = await prismaClient.category.findFirst({
+      where: {
+        slug,
+      },
+      include: {
+        products: true,
+      },
+    })
+
+    return products
+  }
+
+  async searchProductsBySlugWithDeals(
+    slug:
+      | 'mouses'
+      | 'keyboards'
+      | 'headphones'
+      | 'mousepads'
+      | 'monitors'
+      | 'speakers',
+  ) {
+    const products = await prismaClient.product.findMany({
       where: {
         category: {
           slug,
@@ -10,11 +39,11 @@ export class ProductUseCase {
       },
     })
 
-    return productWithDeals
+    return products
   }
 
   async allProducutsWithDeals() {
-    const productsWithDeal = await prismaClient.product.findMany({
+    const products = await prismaClient.product.findMany({
       where: {
         discountPercentage: {
           gt: 0,
@@ -22,7 +51,13 @@ export class ProductUseCase {
       },
     })
 
-    return productsWithDeal
+    return products
+  }
+
+  async allCategoriesProducts() {
+    const categories = await prismaClient.category.findMany()
+
+    return categories
   }
 }
 
