@@ -11,4 +11,5 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.KEY_SECRET_GOOGLE || '',
     }),
   ],
+  secret: 'TEST_TO_DEPLOY',
 }
