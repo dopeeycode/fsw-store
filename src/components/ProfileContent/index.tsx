@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 'use client'
 
-import { useSession, signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { Avatar } from '../ui/avatar'
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { formatName } from '@/utils/format-name'
