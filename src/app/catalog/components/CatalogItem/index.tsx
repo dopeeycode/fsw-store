@@ -1,5 +1,6 @@
 import { Category } from '@prisma/client'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface CatalogItemProps {
   category: Category
@@ -7,10 +8,10 @@ interface CatalogItemProps {
 
 const CatalogItem = ({ category }: CatalogItemProps) => {
   return (
-    <div className="flex flex-col">
+    <Link href={`/category/${category.slug}`} className="flex flex-col">
       <div
-        className="bg-category-item-gradient flex h-[150px] w-full items-center 
-      justify-center rounded-tl-lg rounded-tr-lg"
+        className="flex h-[150px] w-full items-center justify-center 
+      rounded-tl-lg rounded-tr-lg bg-category-item-gradient"
       >
         <Image
           src={category.imageUrl}
@@ -28,7 +29,7 @@ const CatalogItem = ({ category }: CatalogItemProps) => {
       <div className="rounded-bl-lg rounded-br-lg bg-accent py-1 text-center">
         <strong className="text-[0.875rem] font-bold">{category.name}</strong>
       </div>
-    </div>
+    </Link>
   )
 }
 
