@@ -5,9 +5,10 @@ import Banner from './components/Banner'
 import { productUseCase } from '@/use-cases/products'
 
 const Home = async () => {
-  const mousesWithDeals = await productUseCase.productsWithDealsBySlug('mouses')
+  const mousesWithDeals =
+    await productUseCase.searchProductsBySlugWithDeals('mouses')
   const keyboardsWithDeals =
-    await productUseCase.productsWithDealsBySlug('keyboards')
+    await productUseCase.searchProductsBySlugWithDeals('keyboards')
   const productsWithDeal = await productUseCase.allProducutsWithDeals()
 
   return (
