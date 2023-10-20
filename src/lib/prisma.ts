@@ -1,5 +1,6 @@
-import { env } from '@/env';
-import { PrismaClient } from '@prisma/client';
+/* eslint-disable no-var */
+import { env } from '@/env'
+import { PrismaClient } from '@prisma/client'
 
 declare global {
   var chachedPrisma: PrismaClient

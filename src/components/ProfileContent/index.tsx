@@ -7,23 +7,19 @@ import { formatName } from '@/utils/format-name'
 
 const ProfileContent = () => {
   const { data } = useSession()
-  const userName = formatName(data?.user?.name!)
-  
 
+  const userName = formatName(data?.user?.name!)
 
   return (
-    <div className="flex mb-4 items-center justify-between">
-      <div className="flex gap-3 items-center">
+    <div className="mb-4 flex items-center justify-between">
+      <div className="flex items-center gap-3">
         <Avatar>
           <AvatarImage src={data?.user?.image!} />
           <AvatarFallback>{userName}</AvatarFallback>
         </Avatar>
 
-        <span className="font-semibold text-sm">
-          {userName}
-        </span>
+        <span className="text-sm font-semibold">{userName}</span>
       </div>
-      
     </div>
   )
 }

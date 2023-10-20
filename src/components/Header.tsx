@@ -5,13 +5,13 @@ import { Card } from './ui/card'
 import { Button } from './ui/button'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { 
-  HomeIcon, 
-  ListOrderedIcon, 
-  LogInIcon, 
-  MenuIcon, 
-  PercentCircleIcon, 
-  ShoppingCartIcon 
+import {
+  HomeIcon,
+  ListOrderedIcon,
+  LogInIcon,
+  MenuIcon,
+  PercentCircleIcon,
+  ShoppingCartIcon,
 } from 'lucide-react'
 import ProfileContent from './ProfileContent'
 
@@ -22,7 +22,7 @@ const Header = () => {
     await signIn('google')
   }
 
-  async function handleLogout(){
+  async function handleLogout() {
     await signOut()
   }
 
@@ -37,55 +37,45 @@ const Header = () => {
 
         <SheetContent side="left">
           <div className="mt-6 space-y-2">
-            {status === 'authenticated' && data?.user? (
+            {status === 'authenticated' && data?.user ? (
               <>
                 <ProfileContent />
-                <Button 
+                <Button
                   onClick={handleLogout}
-                  variant="outline" 
+                  variant="outline"
                   className="w-full justify-start gap-2"
                 >
                   <LogInIcon size={22} />
                   Sair
                 </Button>
               </>
-            ): (
-              <Button 
-              onClick={handleLogin}
-              variant="outline" 
-              className="w-full justify-start gap-2"
-            >
+            ) : (
+              <Button
+                onClick={handleLogin}
+                variant="outline"
+                className="w-full justify-start gap-2"
+              >
                 <LogInIcon size={22} />
                 Fazer Login
-            </Button>
+              </Button>
             )}
-            <Button 
-              variant="outline" 
-              className="w-full justify-start gap-2"
-            >
-                <HomeIcon size={22} />
-                Inicio
+            <Button variant="outline" className="w-full justify-start gap-2">
+              <HomeIcon size={22} />
+              Inicio
             </Button>
-            <Button 
-              variant="outline" 
-              className="w-full justify-start gap-2"
-            >
-                <PercentCircleIcon size={22} />
-                Ofertas
+            <Button variant="outline" className="w-full justify-start gap-2">
+              <PercentCircleIcon size={22} />
+              Ofertas
             </Button>
-            <Button 
-              variant="outline" 
-              className="w-full justify-start gap-2"
-            >
-                <ListOrderedIcon size={22} />
-                Catálogo
+            <Button variant="outline" className="w-full justify-start gap-2">
+              <ListOrderedIcon size={22} />
+              Catálogo
             </Button>
           </div>
-
         </SheetContent>
       </Sheet>
 
-      <h1 className="font-semibold text-lg">
+      <h1 className="text-lg font-semibold">
         <span className="text-primary">FWS</span> Store
       </h1>
 

@@ -7,7 +7,7 @@ interface BannerProps extends ImageProps {
 
 const Banner = ({ src, alt }: BannerProps) => {
   return (
-    <Image 
+    <Image
       src={`/images/${src}`}
       width={0}
       height={0}

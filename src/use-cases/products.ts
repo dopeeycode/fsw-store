@@ -1,4 +1,4 @@
-import { prismaClient } from "@/lib/prisma"
+import { prismaClient } from '@/lib/prisma'
 
 export class ProductUseCase {
   async productsWithDealsBySlug(slug: 'mouses' | 'keyboards') {
@@ -6,8 +6,8 @@ export class ProductUseCase {
       where: {
         category: {
           slug,
-        }
-      }
+        },
+      },
     })
 
     return productWithDeals
@@ -17,9 +17,9 @@ export class ProductUseCase {
     const productsWithDeal = await prismaClient.product.findMany({
       where: {
         discountPercentage: {
-          gt: 0
-        }
-      }
+          gt: 0,
+        },
+      },
     })
 
     return productsWithDeal

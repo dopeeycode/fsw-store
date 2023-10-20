@@ -5,7 +5,10 @@ import Header from '@/components/Header'
 import { AuthProvider } from '@/providers/auth'
 import Footer from '@/components/Footer'
 
-const spaceGroteskFont = SpaceGrotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
+const spaceGroteskFont = SpaceGrotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'FSW Store',
@@ -20,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={spaceGroteskFont.className}>
-        <AuthProvider>
-          <Header />
-          {children}
-          <Footer />
-        </AuthProvider>
+        <div className="flex h-full flex-col">
+          <AuthProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </AuthProvider>
+        </div>
       </body>
     </html>
   )
