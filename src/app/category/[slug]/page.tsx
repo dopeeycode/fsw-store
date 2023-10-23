@@ -5,7 +5,9 @@ import { productUseCase } from '@/use-cases/products'
 import { cumputeProductTotalPrice } from '@/utils/product'
 
 const CategoryProducts = async ({ params }: any) => {
-  const category = await productUseCase.searchProductsBySlug(params.slug)
+  const category = await productUseCase.productsByCategoryPassedAsSlug(
+    params.slug,
+  )
   return (
     <div className="p-5">
       <Badge
