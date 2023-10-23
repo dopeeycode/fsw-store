@@ -1,9 +1,9 @@
 import React from 'react'
 import CategoryItem from '../CategoryItem'
-import { prismaClient } from '@/lib/prisma'
+import { productUseCase } from '@/use-cases/products'
 
 const Categories = async () => {
-  const categories = await prismaClient.category.findMany({})
+  const categories = await productUseCase.allCategoriesProducts()
 
   return (
     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
